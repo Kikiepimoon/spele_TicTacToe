@@ -39,8 +39,6 @@ command=lambda:btnClick(btn7)
 command=lambda:btnClick(btn8)
 command=lambda:btnClick(btn9)
 
-
-
 speletajsX=True #kuram spēlētājam kārta spēlēt, liks krustiņus
 count=0 #aizpildīto rūtiņu skaits
 
@@ -64,13 +62,34 @@ def checkWinner():
     global winner
     winner=False #noteiks, ja būs neizšķirts
 
-    if (btn1["text"]=="X"and btn2["text"]=="X" and btn3["text"]=="X" or btn4["text"]=="X" and btn5["text"]=="X" and btn6["text"]=="X" or btn7["text"]=="X" and btn8["text"]=="X" and btn9["text"]=="X" ):
+    if (btn1["text"]=="X"and btn2["text"]=="X" and btn3["text"]=="X" or 
+        btn4["text"]=="X" and btn5["text"]=="X" and btn6["text"]=="X" or 
+        btn7["text"]=="X" and btn8["text"]=="X" and btn9["text"]=="X" or 
+        btn1["text"]=="X"and btn4["text"]=="X" and btn7["text"]=="X" or 
+        btn2["text"]=="X" and btn5["text"]=="X" and btn8["text"]=="X" or 
+        btn3["text"]=="X" and btn6["text"]=="X" and btn9["text"]=="X" or
+        btn1["text"]=="X"and btn5["text"]=="X" and btn9["text"]=="X" or 
+        btn2["text"]=="X" and btn3["text"]=="X" and btn5["text"]=="X" or 
+        btn7["text"]=="X"):
         winner=True
-        messagebox.showinfo("TicTacToe","SpeletajsX ir uzvarētājs")
+        messagebox.showinfo("TicTacToe","SpēlētējsX ir uzvarētājs")
 
-    elif (btn1["text"]=="O"and btn2["text"]=="O" and btn3["text"]=="O" or...):
+
+
+    elif (btn1["text"]=="O"and btn4["text"]=="O" and btn7["text"]=="O" or btn2["text"]=="O" and btn5["text"]=="O" and btn8["text"]=="O" or btn3["text"]=="O" and btn6["text"]=="O" and btn9["text"]=="O" ):
         winner=True
-        messagebox.showinfo("TicTacToe","SpeletajsO ir uzvarētājs")
+        messagebox.showinfo("TicTacToe","SpēlētējsO ir uzvarētājs")
+
+    elif (btn1["text"]=="O"and btn5["text"]=="O" and btn9["text"]=="O" or btn2["text"]=="O" and btn3["text"]=="O" and btn5["text"]=="O" or btn7["text"]=="O" and btn8["text"]=="O" and btn9["text"]=="O" ):
+        winner=True
+        messagebox.showinfo("TicTacToe","SpēlētējsO ir uzvarētājs")
+
+
+
+
+
+
+
 
 
 
