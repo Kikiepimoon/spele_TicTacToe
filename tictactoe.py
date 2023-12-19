@@ -15,7 +15,7 @@ def btnClick(button): #padod visu pogu
         checkWinner()
 
     elif button["text"]==" " and speletajsX==False: #mainās spēlētāji
-        button["text"]="0"
+        button["text"]="O"
         speletajsX=True
         count+=1
         checkWinner()
@@ -117,6 +117,7 @@ def checkWinner():
 
         btn1["text"]=="X"and btn5["text"]=="X" and btn9["text"]=="X" or 
         btn3["text"]=="X" and btn5["text"]=="X" and btn7["text"]=="X"):
+        
         winner=True
         disableButtons()
         messagebox.showinfo("TicTacToe","Spēlētējs X ir uzvarētājs.")
@@ -146,7 +147,15 @@ def checkWinner():
         jaunsLogs=Toplevel()
         jaunsLogs.title('Info par programmu')
         jaunsLogs.geometry("300x300")
+        
         apraksts=Label(jaunsLogs,text='Spēles noteikumi')
+        apraksts=Label(jaunsLogs,text='Esiet sveicināti krustiņos un nullītēs!')
+        apraksts=Label(jaunsLogs,text='Spēli jāspēlē 2 cilvēkiem no vienas ierīces.')
+        apraksts=Label(jaunsLogs,text='1. spēlētājs spēlē kā X, bet 2. spēlētajs - kā O.')
+        apraksts=Label(jaunsLogs,text='Spēlētāji pēc kārtas liek X vai O tukšajos laukumos.')
+        apraksts=Label(jaunsLogs,text='Uzvar tas, kurš pirmais iegūst 3 X vai O pēc kārtas - horizontāli, vertikāli vai pa diagonāli.')
+        apraksts=Label(jaunsLogs,text='Nospiežot pugu "Jauna spēle", spēle sāksies no sākuma.')
+        apraksts=Label(jaunsLogs,text='Izbaudi!')
         apraksts.grid(row=0,column=0)
         return 0
 
@@ -156,12 +165,10 @@ def checkWinner():
     opcijas=Menu(galvenaIzvelne,tearoff=False)#mazā izvēlne
 
     galvenaIzvelne.add_cascade(label="Opcijas",menu=opcijas)
-    galvenaIzvelne.add_command(label="Par prgrammu", command = infoLogs)
 
+    opcijas.add_command(label="Par prgrammu",command=infoLogs)
     opcijas.add_command(label="Jauna spēle",command=reset)
     opcijas.add_command(label="Iziet",command=mansLogs.quit)
-
-
 
 
 mansLogs.mainloop()
