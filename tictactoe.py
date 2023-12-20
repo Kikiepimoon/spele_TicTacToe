@@ -142,7 +142,7 @@ def checkWinner():
         disableButtons()
         messagebox.showinfo("TicTacToe"," Spēles rezultāts ir neizšķirts.")
         return
-    
+
     def infoLogs():
         jaunsLogs=Toplevel()
         jaunsLogs.title('Info par programmu')
@@ -158,20 +158,19 @@ def checkWinner():
         apraksts=Label(jaunsLogs,text='Izbaudi!')
         apraksts.grid(row=0,column=0)
         return 0
-
+     
 #Lielā izvēlne
     galvenaIzvelne=Menu(mansLogs)#izveido galveno izvēlni
     mansLogs.config(menu=galvenaIzvelne)#pievieno galvenajam logam
     opcijas=Menu(galvenaIzvelne,tearoff=False)#mazā izvēlne
-
+    
     galvenaIzvelne.add_cascade(label="Opcijas",menu=opcijas)
-
+    
     opcijas.add_command(label="Par prgrammu",command=infoLogs)
     opcijas.add_command(label="Jauna spēle",command=reset)
     opcijas.add_command(label="Iziet",command=mansLogs.quit)
 
-
-mansLogs.mainloop()
+    mansLogs.mainloop()
 
 
 
