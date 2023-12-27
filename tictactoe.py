@@ -79,17 +79,17 @@ def reset():
     speletajsX=True
     return 0
 
-btn1=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn1))
-btn2=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn2))
-btn3=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn3))
+btn1=Button(mansLogs, text=" ", width=6, height=3, font=('Helvica', 24), command=lambda:btnClick(btn1), bg='light green', fg='black')
 
-btn4=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn4))
-btn5=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn5))
-btn6=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn6))
+btn2=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn2), bg='light green',fg='black')
+btn3=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn3), bg='light green',fg='black')
+btn4=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn4), bg='light green',fg='black')
+btn5=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn5), bg='light green',fg='black')
+btn6=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn6), bg='light green',fg='black')
 
-btn7=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn7))
-btn8=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn8))
-btn9=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn9))
+btn7=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn7), bg='light green',fg='black')
+btn8=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn8), bg='light green',fg='black')
+btn9=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn9), bg='light green',fg='black')
 
 btn1.grid(row=0,column=0) #pievieno pogas 
 btn2.grid(row=0,column=1)
@@ -102,6 +102,55 @@ btn6.grid(row=1,column=2)
 btn7.grid(row=2,column=0) #pievieno pogas 
 btn8.grid(row=2,column=1)
 btn9.grid(row=2,column=2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #Lielā izvēlne
+galvenaIzvelne=Menu(mansLogs)#izveido galveno izvēlni
+mansLogs.config(menu=galvenaIzvelne)#pievieno galvenajam logam
+opcijas=Menu(galvenaIzvelne,tearoff=False)#mazā izvēlne
+
+galvenaIzvelne.add_cascade(label="Opcijas",menu=opcijas)
+
+def infoLogs():
+        jaunsLogs=Toplevel()
+        jaunsLogs.title('Info par programmu')
+        jaunsLogs.geometry("300x300")
+        
+        apraksts=Label(jaunsLogs,text='Spēles noteikumi')
+        apraksts.grid (row=0, column=0)
+        apraksts=Label(jaunsLogs,text='Esiet sveicināti krustiņos un nullītēs!')
+        apraksts.grid (row=1, column=0)
+        apraksts=Label(jaunsLogs,text='Spēli jāspēlē 2 cilvēkiem no vienas ierīces.')
+        apraksts.grid (row=2, column=0)
+        apraksts=Label(jaunsLogs,text='1. spēlētājs spēlē kā X, bet 2. spēlētajs - kā O.')
+        apraksts.grid (row=3, column=0)
+        apraksts=Label(jaunsLogs,text='Spēlētāji pēc kārtas liek X vai O tukšajos laukumos.')
+        apraksts.grid (row=4, column=0)
+        apraksts=Label(jaunsLogs,text='Uzvar tas, kurš pirmais iegūst 3 X vai O pēc kārtas - horizontāli, vertikāli vai pa diagonāli.')
+        apraksts.grid (row=5, column=0)
+        apraksts=Label(jaunsLogs,text='Nospiežot pugu "Jauna spēle", spēle sāksies no sākuma.')
+        apraksts.grid (row=6, column=0)
+        apraksts=Label(jaunsLogs,text='Izbaudi!')
+        apraksts.grid(row=7,column=0)
+        return 
+    
+opcijas.add_command(label="Par prgrammu",command=infoLogs)
+opcijas.add_command(label="Jauna spēle",command=reset)
+opcijas.add_command(label="Iziet",command=mansLogs.quit)
 
 def checkWinner():
     global winner
@@ -142,49 +191,6 @@ def checkWinner():
         disableButtons()
         messagebox.showinfo("TicTacToe"," Spēles rezultāts ir neizšķirts.")
         return
-
-    def infoLogs():
-        jaunsLogs=Toplevel()
-        jaunsLogs.title('Info par programmu')
-        jaunsLogs.geometry("300x300")
-        
-        apraksts=Label(jaunsLogs,text='Spēles noteikumi')
-        apraksts=Label(jaunsLogs,text='Esiet sveicināti krustiņos un nullītēs!')
-        apraksts=Label(jaunsLogs,text='Spēli jāspēlē 2 cilvēkiem no vienas ierīces.')
-        apraksts=Label(jaunsLogs,text='1. spēlētājs spēlē kā X, bet 2. spēlētajs - kā O.')
-        apraksts=Label(jaunsLogs,text='Spēlētāji pēc kārtas liek X vai O tukšajos laukumos.')
-        apraksts=Label(jaunsLogs,text='Uzvar tas, kurš pirmais iegūst 3 X vai O pēc kārtas - horizontāli, vertikāli vai pa diagonāli.')
-        apraksts=Label(jaunsLogs,text='Nospiežot pugu "Jauna spēle", spēle sāksies no sākuma.')
-        apraksts=Label(jaunsLogs,text='Izbaudi!')
-        apraksts.grid(row=0,column=0)
-        return 0
-     
-#Lielā izvēlne
-    galvenaIzvelne=Menu(mansLogs)#izveido galveno izvēlni
-    mansLogs.config(menu=galvenaIzvelne)#pievieno galvenajam logam
-    opcijas=Menu(galvenaIzvelne,tearoff=False)#mazā izvēlne
     
-    galvenaIzvelne.add_cascade(label="Opcijas",menu=opcijas)
-    
-    opcijas.add_command(label="Par prgrammu",command=infoLogs)
-    opcijas.add_command(label="Jauna spēle",command=reset)
-    opcijas.add_command(label="Iziet",command=mansLogs.quit)
 
-    mansLogs.mainloop()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+mansLogs.mainloop()
