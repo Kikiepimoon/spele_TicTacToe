@@ -21,7 +21,7 @@ def btnClick(button): #padod visu pogu
         checkWinner()
 
     else:
-        messagebox.showerror("TicTacToe","Šeit kāds ir ieklikšķinājis!")
+        messagebox.showerror("TicTacToe","Šeit kāds ir ieklikšķinājis!") #izvada tekstu
     return
 
 def disableButtons(): #spēle beidzas, pogas izslēgtas
@@ -53,7 +53,7 @@ def disableButtons(): #spēle beidzas, pogas izslēgtas
     return 0
 
 def reset():
-    btn1.config(state=NORMAL)
+    btn1.config(state=NORMAL) #poga ir aktīva
     btn2.config(state=NORMAL)
     btn3.config(state=NORMAL)
     btn4.config(state=NORMAL)
@@ -63,7 +63,7 @@ def reset():
     btn8.config(state=NORMAL)
     btn9.config(state=NORMAL)
 
-    btn1["text"]=" "
+    btn1["text"]=" " #atstarpe
     btn2["text"]=" "
     btn3["text"]=" "
     btn4["text"]=" "
@@ -79,7 +79,7 @@ def reset():
     speletajsX=True
     return 0
 
-btn1=Button(mansLogs, text=" ", width=6, height=3, font=('Helvica', 24), command=lambda:btnClick(btn1), bg='light green', fg='black')
+btn1=Button(mansLogs, text=" ", width=6, height=3, font=('Helvica', 24), command=lambda:btnClick(btn1), bg='light green', fg='black') # pogas izmērs, fonts, krāsa, garums, augstums, utt. 
 
 btn2=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn2), bg='light green',fg='black')
 btn3=Button(mansLogs,text=" ",width=6,height=3,font=('Helvica',24), command=lambda:btnClick(btn3), bg='light green',fg='black')
@@ -103,30 +103,15 @@ btn7.grid(row=2,column=0) #pievieno pogas 
 btn8.grid(row=2,column=1)
 btn9.grid(row=2,column=2)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     #Lielā izvēlne
 galvenaIzvelne=Menu(mansLogs)#izveido galveno izvēlni
 mansLogs.config(menu=galvenaIzvelne)#pievieno galvenajam logam
 opcijas=Menu(galvenaIzvelne,tearoff=False)#mazā izvēlne
 
-galvenaIzvelne.add_cascade(label="Opcijas",menu=opcijas)
+galvenaIzvelne.add_cascade(label="Opcijas",menu=opcijas) 
 
 def infoLogs():
-        jaunsLogs=Toplevel()
+        jaunsLogs=Toplevel() #spēles noteikumi
         jaunsLogs.title('Info par programmu')
         jaunsLogs.geometry("300x300")
         
@@ -148,15 +133,15 @@ def infoLogs():
         apraksts.grid(row=7,column=0)
         return 
     
-opcijas.add_command(label="Par prgrammu",command=infoLogs)
+opcijas.add_command(label="Par prgrammu",command=infoLogs) #mazā izvēlne
 opcijas.add_command(label="Jauna spēle",command=reset)
 opcijas.add_command(label="Iziet",command=mansLogs.quit)
 
 def checkWinner():
     global winner
-    winner=False #noteiks, ja būs neizšķirts
+    winner=False 
 
-    if (btn1["text"]=="X"and btn2["text"]=="X" and btn3["text"]=="X" or 
+    if (btn1["text"]=="X"and btn2["text"]=="X" and btn3["text"]=="X" or #nosaka visus iespējamos veidus, kā uzvar x
         btn4["text"]=="X" and btn5["text"]=="X" and btn6["text"]=="X" or 
         btn7["text"]=="X" and btn8["text"]=="X" and btn9["text"]=="X" or 
 
@@ -171,7 +156,7 @@ def checkWinner():
         disableButtons()
         messagebox.showinfo("TicTacToe","Spēlētējs X ir uzvarētājs.")
 
-    elif (btn1["text"]=="O"and btn2["text"]=="O" and btn3["text"]=="O" or 
+    elif (btn1["text"]=="O"and btn2["text"]=="O" and btn3["text"]=="O" or #nosaka visus iespējamos veidus, kā uzvar o
         btn4["text"]=="O" and btn5["text"]=="O" and btn6["text"]=="O" or 
         btn7["text"]=="O" and btn8["text"]=="O" and btn9["text"]=="O" or 
 
@@ -186,7 +171,7 @@ def checkWinner():
             disableButtons()
             messagebox.showinfo("TicTacToe","Spēlētējs O ir uzvarētājs.")
 
-    elif count == 9:
+    elif count == 9: #noteiks, ja būs neizšķirts
         winner = False
         disableButtons()
         messagebox.showinfo("TicTacToe"," Spēles rezultāts ir neizšķirts.")
